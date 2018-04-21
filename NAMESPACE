@@ -1,7 +1,6 @@
 exportPattern("^[^\\.]")
 export(getTSE)
 importFrom("xts","xts","last")
-importFrom("grDevices", "graphics.off")
 importFrom("graphics", "barplot", "plot", "text")
 importFrom("stats", "sd")
 importFrom("utils", "download.file", "read.csv")

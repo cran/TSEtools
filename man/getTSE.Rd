@@ -19,7 +19,7 @@
 	}
 }
 \details{
-	The list of symbols or assets can be named, and the list names will be used as names for the variables. Component data is an array with \CRANpkg{xts} time series object. The name for dimensions are: Open, High, Low, Close, Volume. The value of symbols are appear in \code{Global Environment}.
+	The list of symbols or assets can be named, and the list names will be used as names for the variables. Component data is an array with \CRANpkg{xts} time series object. The name for dimensions are: Open, High, Low, Close, Volume, Last. The value of symbols are appear in \code{Global Environment}.
 
 }
 \value{

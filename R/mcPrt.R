@@ -1,6 +1,6 @@
 mcPrt<-function(asset,sub="::",pstvRtn=FALSE,L=1, Rf=0.0){
   z<-list()
-  graphics.off()
+#  graphics.off()
   mRetn<-SD<-Sharp<-array(0)
   asset<-asset[!duplicated(asset)]
   if(length(asset)>1){

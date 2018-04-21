@@ -5,7 +5,7 @@ asset<-function(s,file1){
       temp<-NULL
       temp<-read.csv(file1,sep=",",header=TRUE)
       temp<-temp[-c(1,7,9,10,11)]
-      colnames(temp)<-c("Date","Open","High","Low","Close","Volume")
+      colnames(temp)<-c("Date","Open","High","Low","Close","Volume","Last")
       assign(x=s,value=temp)
       date<-as.Date(as.character(get(s)$Date),"%Y%m%d")
       assign(x=s,value=xts(get(s)[-1],order.by=date))
