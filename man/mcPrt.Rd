@@ -7,7 +7,7 @@ Matrix Conversion in Portfolio
 mcPrt function compound the vector of assets in matrix form to using the multivariate data analysis. The assets must be included the items of \code{Open}, \code{Close}, \code{High}, \code{Low} and \code{Volumn}. The function also calculate the rate of return and Sharpe ratio for portfolio selection.
 }
 \usage{
-mcPrt(asset, sub = "::", pstvRtn = FALSE, L = 1, Rf = 0.0)
+mcPrt(asset, sub = "::", pstvRtn = FALSE, pr = "daily", Rf = 0.0)
 }
 \arguments{
   \item{asset}{
@@ -19,8 +19,8 @@ The character string in the form of "start date :: end date". The date format is
 \item{pstvRtn}{
 logical flag to determine, if the symbols with mean of return (see, details) should be positive/negative. Missing value is taken as false. By setting \code{pstvRtn=TRUE}, only a check the symbols that the mean of return is not negative and symbols with negative returns will be vanished from the list of calculation.
 }
-\item{L}{
-an integer specifying the desired lag. Default value is 1.
+\item{pr}{
+a character specifying the desired period time of return. Default value is daily. The values get "daily", "weekly" and "monthly".
 }
 \item{Rf}{
 an integer value to give risk free.
@@ -44,5 +44,5 @@ Carmona (2003, ISBN:0387202862)
 \examples{
 fpath<-system.file("extdata", "sample.csv", package="TSEtools")
 asset0<-getTSE(fpath)$assets
-rtn<-mcPrt(asset0, sub="2016::", pstvRtn=TRUE, L=5)$return
+rtn<-mcPrt(asset0, sub="2016::", pstvRtn=TRUE, pr="weekly")$return
 }
