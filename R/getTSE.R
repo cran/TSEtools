@@ -31,20 +31,24 @@ temp<-temp1<-file0<-NULL
     file1<-paste0(file0,".csv")
     temp<-paste0(url,as.character(sName$code[sName$symbol==s]))
     if(!identical(temp, character(0)) && temp!=url){
-      download.file(temp, file1,mode="wb",quiet=TRUE)
-      cat(s,"compeleted! \n")
-      temp3<-asset(s,file1)
-      assign(as.character(s),temp3, parent.frame())
-      cat("Last observations:\n")
-      print(last(get(s)))
-      cat("\n")
+      
+    tryCatch({download.file(temp, file1, mode="wb",quiet=TRUE);
+    cat(s,"compeleted! \n");
+    temp3<-asset(s,file1);
+    assign(as.character(s),temp3, parent.frame());
+     cat("Last observations:\n");
+    print(last(get(s)));
+     cat("\n")},
+     warning = function(w) {print("URL is not responding! Try it after sometimes.")},
+     error = function(e) {print("URL is not responding! Try it after sometimes.")}
+    )
     }else {
       cat("** ASSET of",s,"DOES NOT EXIST! Please contact with maintainer**","\n")
       no<-match(s,S)
       S<-S[-no]
       }
   }
-  cat("\n",S, "are assigned!\n")
+  #cat("\n",S, "are assigned!\n")
   z$assets<-S
   unlink(folder0, recursive=TRUE)
   class(z) <- "getTSE"

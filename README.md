@@ -1,6 +1,10 @@
 TSEtools
 URL: https://github.com/cran/TSEtools
 
+*** Version 0.1.3  (April, 2019)
+
+- Fixed CRAN ERROR when URL is not response
+
 *** Version 0.1.2  (January 25, 2019)
 
 - Calculated the weekly and monthly rate of return
