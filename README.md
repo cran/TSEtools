@@ -1,7 +1,11 @@
 TSEtools
 URL: https://github.com/cran/TSEtools
 
-*** Version 0.1.3  (April, 2019)
+*** Version 0.1.4  (January 2, 2020)
+
+- Fixed and ERROE in offline
+
+*** Version 0.1.3 (April, 2019)
 
 - Fixed CRAN ERROR when URL is not response
 
