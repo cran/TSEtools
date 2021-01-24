@@ -6,7 +6,7 @@ asset <- function(s, file1) {
     temp <- read.csv(file1, sep = ",", header = TRUE)
     temp <- temp[-c(1, 7, 9, 10, 11)]
     colnames(temp) <- c("Date", "Open", "High", "Low", 
-                        "Close", "Volume", "Last")
+                      "Close", "Volume", "Last")
     assign(x = s, value = temp)
     date <- as.Date(as.character(get(s)$Date), "%Y%m%d")
     assign(x = s, value = xts(get(s)[-1], order.by = date))
@@ -32,7 +32,7 @@ for (s in S) {
   file0 <- tempfile(pattern = "", tmpdir = folder0)
   file1 <- paste0(file0, ".csv")
   temp <- paste0(url, as.character(sName$code[sName$symbol == 
-                                                s]))
+                                             s]))
   if (!identical(temp, character(0)) && temp != url) {
     tryCatch({
       download.file(temp, file1, mode = "wb", quiet = TRUE)
