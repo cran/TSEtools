@@ -42,7 +42,9 @@ The values of function involve \code{close}, \code{return}, \code{max}  and \cod
 Carmona (2003, ISBN:0387202862)
 }
 \examples{
-fpath<-system.file("extdata", "sample.csv", package="TSEtools")
-asset0<-getTSE(fpath)$assets
+\dontrun{
+fpath<-system.file("extdata", "sample.dat", package="TSEtools")
+getTSE(fpath)
 rtn<-mcPrt(asset0, sub="2016::", pstvRtn=TRUE, pr="weekly")$return
+}
 }

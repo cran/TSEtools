@@ -26,6 +26,8 @@
 	The output is an object of the \dQuote{assets} name which get all the name of assets list to download.
 }
 \examples{
-	fpath<-system.file("extdata", "sample.csv", package="TSEtools")
-	assets0<-getTSE(fpath)$assets
+\dontrun{
+	fpath<-system.file("extdata", "sample.dat", package="TSEtools")
+	getTSE(fpath)
+	}
 }

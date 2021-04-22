@@ -67,17 +67,17 @@ mcPrt<-function(asset,sub="::",pstvRtn=FALSE, pr="daily", Rf=0.0){
     z$out<-data.frame(mRetn,SD,Sharp)
     row.names(z$out)<-asset
     colnames(z$out)<-c("meanReturn","volatility","sharpRatio" )
-    cat("Values in % base ",pr,":\n")
-    print(round(z$out*100,2))
+    cat("Values ",pr,":\n")
+    print(round(z$out,2))
     cat("\n")
     if(length(asset)>1){
       barplot(z$out[,3], names.arg=rownames(z$out),
               las=2, main="Sharpe Ratio",
               col ="steelblue", cex.lab = 1, cex.names=0.6,beside=TRUE)
-      plot(z$out[,2]*100,z$out[,1]*100,
+      plot(z$out[,2],z$out[,1],
            xlab= "volatility",
-           ylab= "return",ylim = c(min(z$out[,1]*100)-.5,max(z$out[,1]*100)+0.5))
-      text(z$out[,2]*100,z$out[,1]*100,labels=rownames(z$out),cex=0.5,pos=3)
+           ylab= "return",ylim = c(min(z$out[,1]),max(z$out[,1])))
+      text(z$out[,2],z$out[,1],labels=rownames(z$out),cex=0.5,pos=3)
       
     }
     z$assets<-asset

@@ -11,7 +11,7 @@ prtf<-function( x, Rf=0.0, sh = FALSE, eRtn=NULL ){
   
   maxret<-max(mean.ret)
   minret<-min(mean.ret)
-  rets<-seq(minret,maxret,len=500)
+  rets<-seq(minret,maxret,len=1000)
   
   if(sh==TRUE){
     
@@ -45,11 +45,13 @@ prtf<-function( x, Rf=0.0, sh = FALSE, eRtn=NULL ){
     names(w.min)<-z$prt
     ret.min <- w.min%*%as.matrix(mean.ret)
     sd.min <-sqrt(w.min%*%rcov%*%w.min)
-    
-    bvec.mp <- c(1,eRtn)
+    #####
+  
+    Am.mp <- cbind(rep(1,ncol(t(mean.ret))),as.numeric(t(mean.ret)))
+      bvec.mp <- c(1,eRtn+Rf)
     
     tryCatch(
-      w.mp<-solve.QP(2*(rcov), dvec=dvec, Amat=Am,
+      w.mp<-solve.QP(2*(rcov), dvec=dvec, Amat=Am.mp,
                      bvec=bvec.mp, meq=1,factorized=F)$solution
       , error=function(e){
         w.mp<-NA
@@ -94,10 +96,12 @@ prtf<-function( x, Rf=0.0, sh = FALSE, eRtn=NULL ){
     ret.min <- w.min%*%as.matrix(mean.ret)
     sd.min <-sqrt(w.min%*%rcov%*%w.min)
     ###
-    bvec.mp <- c(1,eRtn,rep(0,ncol(t(mean.ret))))
+    bvec.mp <- c(1,eRtn+Rf,rep(0,ncol(t(mean.ret))))
+    Am.mp <- cbind(rep(1,ncol(t(mean.ret)))
+                ,as.numeric(t(mean.ret)),diag(1,nrow = ncol(t(mean.ret))))
     
     tryCatch(
-      w.mp<-solve.QP(2*(rcov), dvec=dvec, Amat=Am,
+      w.mp<-solve.QP(2*(rcov), dvec=dvec, Amat=Am.mp,
                      bvec=bvec.mp, meq=1,factorized=F)$solution
       , error=function(e){
         w.mp<-NA

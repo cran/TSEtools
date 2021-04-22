@@ -23,7 +23,7 @@ capm<-function (x, Rf = 0.2/270, sh = FALSE, eRtn = NULL){
     wCAPM<-solve.QP(2*(rcov), dvec=dvec, Amat=Am,
                     bvec=bvec.mp, meq=0,factorized=F)$solution
     
-    wmp<-prtf(x, Rf=Rf, sh= T)
+    wmp<-prtf(x, sh= T, Rf=Rf, eRtn=eRtn)
     names(wCAPM)<-rownames(wmp$w[2])
     
     vmp<-(wmp$vol[2])
@@ -42,7 +42,7 @@ capm<-function (x, Rf = 0.2/270, sh = FALSE, eRtn = NULL){
     wCAPM<-solve.QP(2*(rcov), dvec=dvec, Amat=Am,
                     bvec=bvec.mp, meq=0,factorized=F)$solution
     
-    wmp<-prtf(x, Rf=Rf, sh = F)
+    wmp<-prtf(x, sh = F, Rf=Rf, eRtn=eRtn)
     names(wCAPM)<-rownames(wmp$w[2])
     
     vmp<-(wmp$vol[2])

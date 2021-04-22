@@ -1,6 +1,10 @@
 TSEtools
 URL: https://github.com/cran/TSEtools
 
+*** Version 0.2.1  (April, 2021)
+- Removed the percentage from the output values
+- Changed the method of reading the data
+
 *** Version 0.2.0  (January, 2021)
 
 - Added new functions of "prtf" and "capm" to calculate the portfolio of the assets price model

@@ -1,6 +1,6 @@
 getTSE<-function(file,symbols=NA){
   z <- list()
-asset <- function(s, file1) {
+  asset <- function(s, file1) {
   if (file.exists(file1)) {
     temp <- NULL
     temp <- read.csv(file1, sep = ",", header = TRUE)
@@ -18,7 +18,22 @@ asset <- function(s, file1) {
   }
 }
 url <- as.character("http://www.tsetmc.com/tsev2/data/Export-txt.aspx?t=i&a=1&b=")
-sName <- read.csv(file, sep = ",", header = TRUE)
+
+#-
+#sName <- read.csv(file, sep = ",", header = TRUE)
+to.read = file(file, "rb")
+s<-readBin(to.read, character(),500)
+n<-length(s)/3
+close(to.read)
+
+to.read = file(file, "rb")
+symbol<-readBin(to.read, character(), n)
+comp<-readBin(to.read, character(), n)
+code<-readBin(to.read, character(), n)
+close(to.read)
+
+sName<-as.data.frame(cbind(symbol,code))
+#-
 ifelse(is.na(symbols), S <- as.vector(sName$symbol), S <- symbols)
 S <- S[!duplicated(S)]
 folder <- tempdir()
