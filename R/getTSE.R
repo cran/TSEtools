@@ -17,7 +17,7 @@ getTSE<-function(file,symbols=NA){
         "\n")
   }
 }
-url <- as.character("http://www.tsetmc.com/tsev2/data/Export-txt.aspx?t=i&a=1&b=")
+url <- as.character("http://old.tsetmc.com/tsev2/data/Export-txt.aspx?t=i&a=1&b=")
 
 #-
 #sName <- read.csv(file, sep = ",", header = TRUE)
